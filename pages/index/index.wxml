@@ -1,0 +1,59 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="nav-header">
+    <view class="nav-item">
+      <text class="nav-text">原创文章</text>
+      <view class="nav-line"></view>
+    </view>
+     <view class="nav-item active">
+      <text class="nav-text">疾病预后</text>
+      <view class="nav-line"></view>
+    </view>
+     <view class="nav-item">
+      <text class="nav-text">生育咨询</text>
+      <view class="nav-line"></view>
+    </view>
+  </view>
+  <view class="intro-wrap">
+    <view class="intro-title">Q&A</view>
+    <view class="intro-item {{(introIndex==1&&viewIndex==2)?'active':''}}">
+      <view data-viewindex="2" data-introindex="1" class="intro-header" bindtap='bindIntroTap'>
+        <text>为什么需要罕见病预后服务？</text>
+        <image src="/images/arrow.png" class="intro-icon" mode="aspectFill"></image>
+      </view>
+      <view class="intro-content">
+        罕见病由于其罕见性诊断极为困难，很多时候即使诊断之后，患者及家属也并不知道接下来病情会如何演变。这时，准确的疾病预后不仅对于患者极为重要，也能给主治医生提供关键信息判断可能的治疗方案。目前这一领域在学术界还处于一大难题，因此联盟希望结合欧阳笠博士在该领域的专业知识对患者提供一些帮助。
+      </view>
+    </view>
+    <view class="intro-item {{(introIndex==2&&viewIndex==2)?'active':''}}">
+     <view data-viewindex="2" data-introindex="2" class="intro-header" bindtap='bindIntroTap'>
+      <text>为您提供咨询服务的是谁？</text>
+       <image src="/images/arrow.png" class="intro-icon" mode="aspectFill"></image> </view>
+        <view class="intro-content">
+          他是<text class="em">美国明尼苏达大学医学院罕见病科学家欧笠博士</text>。主要研究方向为罕见病基因疗法和溶酶体病疾病机理。与Sangamo Therapeutics合作开发的粘多糖一型基因疗法药物SB-318已在美国进入临床试验阶段，这也是世界上第一次体内基因编辑临床试验。
+          <view>
+            同时他还是世界溶酶体病年会基础医学分会主席、美国卫生部粘多糖症基金获得者，曾两次获得世界溶酶体病年会年轻学者奖。
+          </view>
+        </view>
+    </view>
+    <view class="intro-item {{(introIndex==3&&viewIndex==2)?'active':''}}">
+      <view data-viewindex="2" data-introindex="3" class="intro-header" bindtap='bindIntroTap'>
+        <text>需要上传哪些数据？</text>
+        <image src="/images/arrow.png" class="intro-icon" mode="aspectFill"></image>
+      </view>
+      <view class="intro-content">
+      最好能提供完整的基因测序报告、疾病种类、家族病史（家族成员中谁患有该疾病）。具体内容请扫描文后二维码。
+      </view>
+    </view>
+    <view class="intro-item {{(introIndex==4&&viewIndex==2)?'active':''}}">
+      <view data-viewindex="2" data-introindex="4" class="intro-header" bindtap='bindIntroTap'>
+        <text>我的信息会有泄漏风险吗？</text>
+        <image src="/images/arrow.png" class="intro-icon" mode="aspectFill"></image>
+      </view>
+      <view class="intro-content">
+      首先，联盟会严格保护隐私信息。第二，如果将来需要使用你的信息（比如用作专栏中的例子，或着构建罕见病数据库），会事先征得您的同意并隐去私人信息。
+      </view>
+    </view>
+    <button bindtap="goForm" class="zixun-button button">前往咨询</button>
+  </view>
+</view>

@@ -1,0 +1,35 @@
+<view class="container">
+   <view class="form-wrap {{formShow?'active':''}}">
+    <view class="form-title">填写咨询表单</view>
+    <view class="form-item">
+      <label class="form-label">您的疾病名称:</label>
+      <input type="text" class="form-input"></input>
+    </view>
+    <view class="form-item">
+      <label class="form-label">您的家族病史:</label>
+      <input type="text" class="form-input"></input>
+    </view> 
+     <view class="form-item">
+      <label class="form-label">确诊的年份:</label>
+      <input type="number" class="form-input"></input>
+    </view> 
+    <view class="form-item">
+      <label class="form-label">您的联系方式(手机号):</label>
+      <input type="number" class="form-input"></input>
+    </view>
+    <view class="form-item">
+      <label class="form-label">上传您的基因测序报告的图片:</label>
+      <view class="upload-image" bindtap="bindChooseImage">
+        <image class="upload-icon" src="/images/upload.png" mode="aspectFill"></image>
+        <text>点击上传文件(最多可上传九张)</text>
+      </view>
+    </view>
+    <view class="image-wrap">
+      <view wx:for="{{images}}" wx:key="{{item}}" class="image-item-wrap">
+        <image data-index="{{index}}" class="delete-icon" bindtap='deleteImage' mode="aspectFill" src="/images/delete.png"></image>
+        <image mode="aspectFill" data-src="{{item}}" class="image-item" bindtap='previewImage' src="{{item}}"></image>
+      </view>
+    </view>
+  </view>
+  <button class="submit-button button">提交信息</button>
+</view>

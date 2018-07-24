@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/form/form",
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "七色堇罕见病联盟",
+    "navigationBarTextStyle": "black"
+  }
+}

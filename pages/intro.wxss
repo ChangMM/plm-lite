@@ -1,0 +1,63 @@
+/* intro area */
+.intro-wrap{
+  margin-top:20rpx;
+  background-color: #fff;
+  padding: 0 30rpx 20rpx;
+  color: #666;
+}
+.intro-title{
+ height:80rpx;
+ line-height:80rpx;
+ text-align:center;
+ font-size:30rpx;
+ color: #333;
+ font-weight:bold;
+}
+.intro-item{
+  border-top:2rpx solid #f5f5f5;
+}
+.intro-item:last-of-type{
+  border-bottom: 2rpx solid #f5f5f5;
+}
+.intro-header{
+  height: 80rpx;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.intro-header text{
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.intro-icon{
+  height: 40rpx;
+  width: 40rpx;
+  position: absolute;
+  top:20rpx;
+  right: 0rpx;
+  transition: all ease 0.3s;
+}
+.intro-content{
+  text-align: justify;
+  height: 0;
+  overflow: hidden;
+  transition: all ease 0.3s;
+}
+.intro-item.active .intro-content{
+  height: auto;
+  padding: 20rpx 0;
+  transition: all ease 0.3s;
+}
+.intro-item.active .intro-header{
+  border-bottom: 2rpx dashed #f0f0f0;
+}
+.intro-item.active .intro-icon{
+  transform: rotate(90deg);
+  transition: all ease 0.3s;
+}
+.zixun-button{
+  position: absolute;
+  bottom:20rpx;
+  left: 30rpx;
+  right: 30rpx;
+}

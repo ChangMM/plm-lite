@@ -1,0 +1,36 @@
+/* nav area */
+.nav-header{
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  background-color: #fff;
+}
+.nav-item{
+  width: 140rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-right: 30rpx;
+  text-align: center;
+  display: inline-block;
+}
+.nav-item:last-of-type{
+  margin-right: 0;
+}
+.nav-text{
+  width: 100%;
+  color: #666;
+  font-size: 32rpx;
+  display: inline-block;
+}
+.nav-line{
+  width: 100%;
+  height: 5rpx;
+  border-radius: 3rpx;
+}
+.nav-item.active .nav-text{
+   font-weight: bold;
+   color:  #F5A623;
+}
+.nav-item.active .nav-line{
+   background-color: #F5A623;
+}
