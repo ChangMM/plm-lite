@@ -14,6 +14,10 @@
   box-sizing: border-box;
   height: 100%;
   overflow-y: scroll;
+  display: none;
+}
+.form-wrap.active{
+  display: block;
 }
 .form-title{
  height:80rpx;
@@ -47,7 +51,7 @@ form-input:focus{
   height: 50rpx;
 }
 .upload-image{
-  margin-top:12rpx; 
+  margin-top:20rpx; 
   border:2rpx dashed #ddd;
   height: 100rpx; 
   line-height: 100rpx;
@@ -92,4 +96,24 @@ form-input:focus{
 .image-item{
   height: 100%;
   width: 100%;
+}
+.success-wrap{
+  padding-top: 200rpx;
+  text-align: center;
+}
+.success-icon{
+  height: 200rpx;
+  width: 200rpx;
+  margin-bottom: 30rpx;
+}
+.success-wrap text{
+  display: block;
+  margin-top: 10rpx;
+  color: #666;
+}
+.success-wrap .return-button{
+  color: #F5A623;
+  margin-top: 40rpx;
+  font-size: 32rpx;
+  text-decoration: underline;
 }

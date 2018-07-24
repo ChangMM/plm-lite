@@ -4,7 +4,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    images: ['https://mmbiz.qpic.cn/mmbiz_jpg/FD7RJ6zEIibbWEsCZ97xqupicHCiaZsY86UbC8wKxQQaBT5f27hicu9eXKPmCNJud4EZ64pHgmXNln5dQFCK3CI29Q/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1']
+    images: [],
+    success:false
   },
   bindChooseImage: function () {
     var self = this
@@ -31,6 +32,16 @@ Page({
     wx.previewImage({
       current: dataset.src, 
       urls: self.data.images 
+    })
+  },
+  returnHome:function(){
+    wx.redirectTo({
+      url: '/pages/index/index',
+    })
+  },
+  submitInfo:function(){
+    this.setData({
+      success:true
     })
   },
   /**

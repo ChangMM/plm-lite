@@ -1,5 +1,5 @@
 <view class="container">
-   <view class="form-wrap {{formShow?'active':''}}">
+   <view class="form-wrap {{!success?'active':''}}">
     <view class="form-title">填写咨询表单</view>
     <view class="form-item">
       <label class="form-label">您的疾病名称:</label>
@@ -30,6 +30,12 @@
         <image mode="aspectFill" data-src="{{item}}" class="image-item" bindtap='previewImage' src="{{item}}"></image>
       </view>
     </view>
+     <button bindtap="submitInfo" class="submit-button button">提交信息</button>
   </view>
-  <button class="submit-button button">提交信息</button>
+  <view class="success-wrap">
+    <image mode="aspectFill" class="success-icon" src="/images/success.png"></image>
+    <text>您的信息已经提交成功</text>
+    <text>七个工作日后将给您提供您的咨询报告</text>
+    <text bindtap='returnHome' class="return-button">返回首页</text>
+  </view>
 </view>
