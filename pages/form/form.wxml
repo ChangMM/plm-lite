@@ -3,19 +3,19 @@
     <view class="form-title">填写咨询表单</view>
     <view class="form-item">
       <label class="form-label">您的疾病名称:</label>
-      <input type="text" class="form-input"></input>
+      <input type="text" bindinput="bindDiseaseName" class="form-input"></input>
     </view>
     <view class="form-item">
       <label class="form-label">您的家族病史:</label>
-      <input type="text" class="form-input"></input>
+      <input type="text" bindinput="bindDiseaseGenetic" class="form-input"></input>
     </view> 
      <view class="form-item">
       <label class="form-label">确诊的年份:</label>
-      <input type="number" class="form-input"></input>
+      <input type="number" bindinput="bindDiseaseYear" class="form-input"></input>
     </view> 
     <view class="form-item">
       <label class="form-label">您的联系方式(手机号):</label>
-      <input type="number" class="form-input"></input>
+      <input type="number" bindinput="bindPhone" class="form-input"></input>
     </view>
     <view class="form-item">
       <label class="form-label">上传您的基因测序报告的图片:</label>

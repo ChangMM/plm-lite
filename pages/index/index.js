@@ -1,7 +1,6 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
 Page({
   data: {
     viewIndex:2,
@@ -24,6 +23,7 @@ Page({
     })
   },
   goForm:function(){
+    console.log(app.globalData)
     wx.navigateTo({
       url: '/pages/form/form'
     })
