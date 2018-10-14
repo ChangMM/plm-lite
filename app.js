@@ -1,17 +1,35 @@
 //app.js
 App({
   globalData:{
-    url: "http://www.baidu.com",
-    userInfo: null
+    url: "https://dfc0b424.ngrok.io",
+    userInfo: null,
+    openid: '',
+    sessionKey: "szu0/z63GeoRUv3qt+p60g==",
+    unionid: "o18tW0gyYhMyk_4-vZTLl02GkAx0"
   },
   onLaunch: function () {
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        // console.log(res)
-      }
-    })
+    if(!this.globalData.unionid){
+      // 登录
+      wx.login({
+        success: res => {
+          wx.request({
+            url: this.globalData.url + '/wechat/user/login',
+            data: {
+              "code": res.code
+            },
+            success: res => {
+              this.globalData.openid = res.openid
+              this.globalData.sessionKey = res.sessionKey
+              this.globalData.unionid = res.unionid
+            },
+            fail: res => {
+              console.log(res)
+            }
+          })
+        }
+      })
+    }
+    
     // 获取用户信息
     wx.getSetting({
       success: res => {

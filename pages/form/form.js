@@ -1,14 +1,34 @@
 // pages/form.js
 const app = getApp()
+var uploaded_iamges = []
+
+// upload images
+var uploadImage =  (src) => {
+  return new Promise((resolve, reject) => {
+    wx.uploadFile({
+      url: app.globalData.url + '/wechat/file/upload/reportImages',
+      filePath: src,
+      name: 'file',
+      success: function (res) {
+        resolve(res)
+      },
+      fail: function (res) { 
+        resolve(res)
+      },
+      complete: function (res) {},
+    })
+  })
+}
+
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    disease_name: "",
-    disease_genetic: "",
-    disease_year: "",
-    phone: "",
+    disease_name: "测试疾病名称",
+    disease_genetic: "测试家族遗传病史",
+    disease_year: "测试年份",
+    phone: "13476178804",
     images: [],
     success:false
   },
@@ -85,15 +105,40 @@ Page({
       console.log("手机号格式不对")
       return
     }
+
+    if (this.data.images.length == 0) {
+      console.log("请添加基因测序报告的图片")
+      return
+    }
+
+    //1. 上传图片
+    const promises = this.data.images.map(function (src) {
+      return uploadImage(src);
+    });
+
+    Promise.all(promises).then(function (data) {
+      console.log(data)
+      for(var i = 0; i <data.length; i++){
+        var temp = data[i]
+        if(temp.code == "000000"){
+          uploaded_iamges.push(temp.data.imagePath)
+        }
+      }
+    }).catch(function (reason) {
+      console.log(res)
+    });
+
+    //2.提交包括处理后的图片的数据
     wx.request({
-      url: app.globalData.url + "/diseaseReport",
+      url: app.globalData.url + "/diseaseReport/upload",
       method: "POST",
       data:{
-        unionId: "123456",
+        unionId: app.globalData.unionid,
         diseaseName: this.data.disease_name,
         familyMedicalHistory: this.data.disease_genetic,
         diagnosisDate: this.data.disease_year,
-        reportPhone: this.data.phone
+        reportPhone: this.data.phone,
+        reportImages: uploaded_iamges.join(',')
       },
       success: res => {
         console.log(res)
@@ -102,59 +147,7 @@ Page({
         console.log(res)
       }
     })
-    // this.setData({
-    //   success:true
-    // })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
   /**
    * 用户点击右上角分享
    */
