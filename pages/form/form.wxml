@@ -8,11 +8,11 @@
     <view class="form-item">
       <label class="form-label">您的家族病史:</label>
       <input type="text" bindinput="bindDiseaseGenetic" class="form-input"></input>
-    </view> 
+    </view>
      <view class="form-item">
       <label class="form-label">确诊的年份:</label>
       <input type="number" bindinput="bindDiseaseYear" class="form-input"></input>
-    </view> 
+    </view>
     <view class="form-item">
       <label class="form-label">您的联系方式(手机号):</label>
       <input type="number" bindinput="bindPhone" class="form-input"></input>
@@ -32,7 +32,12 @@
     </view>
      <button bindtap="submitInfo" class="submit-button button">提交信息</button>
   </view>
-  <view class="success-wrap">
+
+  <view class="tip-wrap {{tip_show?'show':''}} ">
+    <text>{{tip_message}}</text>  
+  </view>
+
+  <view class="success-wrap {{success?'show':''}}">
     <image mode="aspectFill" class="success-icon" src="/images/success.png"></image>
     <text>您的信息已经提交成功</text>
     <text>七个工作日后将给您提供您的咨询报告</text>

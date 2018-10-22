@@ -7,6 +7,7 @@
   width: 100%;
   box-sizing: border-box;
   height: 100%;
+  overflow: hidden;
 }
 .form-wrap{
   background-color: #fff;
@@ -45,17 +46,17 @@
   font-size: 28rpx;
 }
 form-input:focus{
-  border-bottom: 1px solid #F5A623;   
+  border-bottom: 1px solid #F5A623;
 }
 .form-date-picker{
   height: 50rpx;
 }
 .upload-image{
-  margin-top:20rpx; 
+  margin-top:20rpx;
   border:2rpx dashed #ddd;
-  height: 100rpx; 
+  height: 100rpx;
   line-height: 100rpx;
-  border-radius: 4rpx; 
+  border-radius: 4rpx;
   text-align: center;
 }
 .upload-image text{
@@ -97,9 +98,43 @@ form-input:focus{
   height: 100%;
   width: 100%;
 }
+.tip-wrap{
+    position: absolute;
+    top:-100rpx;
+    background-color: #F5A623;
+    width: 80%;
+    left:10%;
+    right:10%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    transition: top ease 0.2s;
+}
+.tip-wrap.show{
+  top: 0rpx;
+  transition: top ease 0.2s;
+}
+.tip-wrap text{
+  display: inline-block;
+  height: 80rpx;
+  line-height: 80rpx;
+  color:#fff;
+}
+
 .success-wrap{
+  position: absolute;
+  top:100%;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color: #fff;
   padding-top: 200rpx;
   text-align: center;
+  transition: top ease 0.4s;
+}
+.success-wrap.show{
+  top:0;
+  transition: top ease 0.2s; 
 }
 .success-icon{
   height: 200rpx;

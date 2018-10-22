@@ -1,7 +1,7 @@
 //app.js
 App({
   globalData:{
-    url: "https://dfc0b424.ngrok.io",
+    url: "https://mpapi.qsj-china.com",
     userInfo: null,
     openid: '',
     sessionKey: "szu0/z63GeoRUv3qt+p60g==",
