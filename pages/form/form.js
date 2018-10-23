@@ -1,7 +1,6 @@
 // pages/form.js
 const app = getApp()
 var uploaded_iamges = []
-var isUploading = false
 
 // upload images
 var uploadImage =  (src) => {
@@ -11,7 +10,7 @@ var uploadImage =  (src) => {
       filePath: src,
       name: 'file',
       success: function (res) {
-        resolve(res)
+        resolve(res.data)
       },
       fail: function (res) {
         reject("服务器错误，请稍后重试")
@@ -38,14 +37,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    disease_name: "测试疾病名称",
-    disease_genetic: "测试家族遗传病史",
-    disease_year: "测试年份",
-    phone: "13476178804",
+    disease_name: "",
+    disease_genetic: "",
+    disease_year: "",
+    phone: "",
     images: [],
     success:false,
     tip_message:"这是一个提示信息",
-    tip_show: false
+    tip_show: false,
+    is_uploading: false
   },
   bindDiseaseName: function (e) {
     this.setData({
@@ -96,7 +96,7 @@ Page({
     })
   },
   returnHome:function(){
-    self.setData({
+    this.setData({
       success: false
     })
     wx.reLaunch({
@@ -130,10 +130,12 @@ Page({
       return
     }
 
-    if (isUploading) {
+    if (this.data.is_uploading) {
       return
     } else {
-      isUploading = true
+      this.setData({
+        is_uploading: true
+      })
     }
 
     //1. 上传图片
@@ -144,16 +146,12 @@ Page({
     var self = this
 
     Promise.all(promises).then((data) => {
-      if(data.statusCode != 200) {
-        showTip(self, "服务器错误，请稍后重试")
-        console.log(1)
-        isUploading = false
-        return
-      }
+      console.log(data)
       for(var i = 0; i <data.length; i++){
-        var temp = data[i]
+        var temp = JSON.parse(data[i])
         if(temp.code == "000000"){
           uploaded_iamges.push(temp.data.imagePath)
+          console.log(uploaded_iamges)
         }
       }
       //2.提交包括处理后的图片的数据
@@ -169,21 +167,31 @@ Page({
           reportImages: uploaded_iamges.join(',')
         },
         success: res => {
+          if(res.data.code == "000000"){
+            self.setData({
+              success: true
+            })
+          } else {
+            showTip(self, "提交失败请重试")
+          }
           self.setData({
-            success: true
+            is_uploading: false
           })
-          isUploading = false
           console.log(res)
         },
         fail: res => {
-          isUploading = false
+          self.setData({
+            is_uploading: false
+          })
           console.log(res)
         }
       })
     }).catch(function (reason) {
       console.log(2)
       showTip(self, reason)
-      isUploading = false
+      self.setData({
+        is_uploading: false
+      })
     });
   },
   /**

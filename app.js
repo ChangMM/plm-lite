@@ -4,8 +4,8 @@ App({
     url: "https://mpapi.qsj-china.com",
     userInfo: null,
     openid: '',
-    sessionKey: "szu0/z63GeoRUv3qt+p60g==",
-    unionid: "o18tW0gyYhMyk_4-vZTLl02GkAx0"
+    sessionKey: "",
+    unionid: ""
   },
   onLaunch: function () {
     if(!this.globalData.unionid){
@@ -18,9 +18,10 @@ App({
               "code": res.code
             },
             success: res => {
-              this.globalData.openid = res.openid
-              this.globalData.sessionKey = res.sessionKey
-              this.globalData.unionid = res.unionid
+              console.log(res)
+              this.globalData.openid = res.data.openid
+              this.globalData.sessionKey = res.data.sessionKey
+              this.globalData.unionid = res.data.unionid
             },
             fail: res => {
               console.log(res)

@@ -30,7 +30,8 @@
         <image mode="aspectFill" data-src="{{item}}" class="image-item" bindtap='previewImage' src="{{item}}"></image>
       </view>
     </view>
-     <button bindtap="submitInfo" class="submit-button button">提交信息</button>
+     <button bindtap="submitInfo" class="submit-button button">
+     {{is_uploading ? "正在提交信息...":"提交信息"}}</button>
   </view>
 
   <view class="tip-wrap {{tip_show?'show':''}} ">
