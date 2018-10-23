@@ -62,5 +62,11 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '七色堇疾病预后小程序',
+      path: '/pages/index/index'
+    }
   }
 })
